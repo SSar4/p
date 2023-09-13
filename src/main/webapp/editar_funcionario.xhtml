@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core" template="template.xhtml">
+
+
+	<ui:define name="centro">
+		<h:form id="id-forme-login" >
+			<h:messages layout="list" />
+			<h:outputLabel for="matricula" value="matricula" />
+			<h:inputText disabled="true" value="#{funcionarioBeans.funcionario.id.matricula}" id="matricula" />
+			<h:outputLabel for="cpf" value="cpf" />
+			<h:inputText disabled="true" value="#{funcionarioBeans.funcionario.id.cpf}" id="cpf" />
+			<h:outputLabel for="email" value="email" />
+			<h:inputText value="#{funcionarioBeans.funcionario.email}" id="email" />
+			<h:outputLabel for="nome" value="nome" />
+			<h:inputText value="#{funcionarioBeans.funcionario.nome}" id="nome" />
+			<h:outputLabel for="senha" value="senha" />
+			<h:inputSecret value="#{funcionarioBeans.funcionario.senha}" id="senha" />
+			<h:outputLabel for="cargo" value="Cargo:" />
+			<h:outputLabel for="cargo" value="Cargo:" />
+			<h:selectOneMenu value="#{funcionarioBeans.cargoSelecionado}" id="cargo">
+				<f:selectItem itemLabel="--" itemValue="0" />
+				<f:selectItem itemLabel="Gerente" itemValue="1" />
+				<f:selectItem itemLabel="Analista" itemValue="2" />
+				<f:selectItem itemLabel="Desenvolvedor" itemValue="3" />
+				<f:selectItem itemLabel="Designer" itemValue="4" />
+				<f:selectItem itemLabel="Assistente" itemValue="5" />
+				<f:selectItem itemLabel="Outro" itemValue="6" />
+				<!-- Adicione mais opções conforme necessário -->
+			</h:selectOneMenu>
+			<br />
+			<h:commandButton id="comando" styleClass="btn waves-effect waves-light blue lighten-1" 
+				action="#{funcionarioBeans.inserir()}" value="Salvar" />
+		</h:form>
+		<br />
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Gestão Empresas</title>
+
+	<!-- CSS  -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		rel="stylesheet" />
+	<h:outputStylesheet library="styles" name="style.css" />
+	<h:outputStylesheet library="styles" name="materialize.css" />
+
+	<!-- Adicione um estilo personalizado para o body -->
+	<style>
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.container {
+	flex: 1;
+}
+</style>
+</h:head>
+
+<body>
+
+	<nav class="blue lighten-1" role="navigation">
+	<div class="nav-wrapper container">
+		<a id="logo-container" href="#" class="brand-logo">Listagem de
+			Funcionarios</a>
+		<ul class="right hide-on-med-and-down">
+
+		</ul>
+
+		<ul id="nav-mobile" class="sidenav">
+			<li><a href=""></a></li>
+		</ul>
+		<a href="#" data-target="nav-mobile" class="sidenav-trigger"><i
+			class="material-icons">menu</i></a>
+	</div>
+	</nav>
+
+	<p:messages style="margin-left: 190px; width: 50%;" id="messages"
+		autoUpdate="false" showDetail="false" closable="true" />
+
+	<br />
+	<br />
+
+	<h:form>
+
+		<p:commandButton style="margin-left: 190px;" icon=""
+			value="Cadastrar Funcionario"
+			action="#{funcionarioBeans.formularioCadastro}" />
+			<p:commandButton style="margin-left: 65%;" icon=""
+			value="sair"
+			action="#{loginBeans.logout}" />
+		<br />
+		<br />
+
+
+		<br />
+		<p:dataTable style="margin-left: 190px; width: 80%;" id="pessoaTable"
+			value="#{funcionarioBeans.funcionarios}" var="funcionario"
+			emptyMessage="Nenhuma informação a ser exibida" paginator="true"
+			rows="10" paginatorPosition="bottom">
+
+			<p:column headerText="Matricula">
+				<h:outputText value="#{funcionario.id.matricula}" />
+			</p:column>
+
+			<p:column headerText="Nome" sortBy="#{funcionario.nome}">
+				<h:outputText value="#{funcionario.nome}" />
+			</p:column>
+
+			<p:column headerText="Cargo">
+				<h:outputText value="#{funcionario.cargo.nome}" />
+			</p:column>
+
+			<p:column headerText="Salario">
+				<h:outputText value="#{funcionario.cargo.salario}" />
+			</p:column>
+
+			<p:column headerText="Email">
+				<h:outputText value="#{funcionario.email}" />
+			</p:column>
+
+			<p:column headerText="CPF">
+				<h:outputText value="#{funcionario.id.cpf}" />
+			</p:column>
+
+			<p:column headerText="Editar">
+				<p:commandButton icon="pi pi-pencil"
+					action="#{funcionarioBeans.formularioEditar(funcionario)}"
+					update="pessoaTable" />
+			</p:column>
+
+			<p:column headerText="Excluir">
+				<p:commandButton icon="pi pi-trash" title="Excluir"
+					action="#{funcionarioBeans.excluir(funcionario)}"
+					update="pessoaTable" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+</body>
+</html>
