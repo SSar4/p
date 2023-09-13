@@ -25,3 +25,7 @@ INSERT INTO cargo (nome, salario) VALUES
     ('Designer', 3500.00),
     ('Assistente', 3000.00),
     ('Outro', 3000.00);
+    
+-- Inserir um funcionário na tabela funcionario
+INSERT INTO funcionario (matricula, nome, email, senha, cpf, cargo_id)
+VALUES ('123456', 'João Silva', 'joao.silva@example.com', 'senha123', '12345678901', 1);
